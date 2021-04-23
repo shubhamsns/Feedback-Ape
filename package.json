@@ -1,15 +1,37 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "fastfeedback",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.5.2",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
+    "firebase": "^8.4.1",
+    "framer-motion": "^4.1.8",
+    "js-cookie": "^2.2.1",
     "next": "10.x",
     "react": "17.x",
     "react-dom": "17.x"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "prettier": "^2.1.1"
   }
 }
