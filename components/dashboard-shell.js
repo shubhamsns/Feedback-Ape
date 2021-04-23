@@ -1,4 +1,3 @@
-import React from 'react'
 import {Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Heading, Button, Flex, Link, Avatar} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
