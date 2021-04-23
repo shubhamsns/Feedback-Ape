@@ -3,6 +3,7 @@ import {Button, Flex} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
 import {FastFeedbackLogo} from '@/assets/icons'
+import Link from 'next/link'
 
 function Home() {
   const auth = useAuth()
@@ -12,11 +13,13 @@ function Home() {
       <Head>
         <title>Fast Feedback</title>
       </Head>
-      <FastFeedbackLogo color="black" h="64px" w="64px" />
+
+      <FastFeedbackLogo color="black" h="16" w="16" />
+
       {auth.user ? (
-        <Button as="a" href="/dashboard">
-          View Dashboard
-        </Button>
+        <Link href="/dashboard" passHref>
+          <Button as="a">View Dashboard</Button>
+        </Link>
       ) : (
         <Button mt={4} size="sm" onClick={() => auth.signinWithGitHub()}>
           Sign In

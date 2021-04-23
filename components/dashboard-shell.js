@@ -2,6 +2,7 @@ import {Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Heading, Button, Flex, 
 
 import {useAuth} from '@/lib/auth'
 import {FastFeedbackLogo} from '@/assets/icons'
+
 import {AddSiteModal} from './add-site-modal'
 
 function DashboardShell({children}) {
@@ -9,27 +10,38 @@ function DashboardShell({children}) {
 
   return (
     <Box backgroundColor="gray.100" h="100vh">
-      <Flex backgroundColor="white" mb={16} w="full">
-        <Flex alignItems="center" justifyContent="space-between" py={4} maxW="1250px" margin="0 auto" w="full" px={8}>
+      {/* Header */}
+      <Box as="header" backgroundColor="white" mb={16} w="full">
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          py={4}
+          maxW="1250px"
+          margin="0 auto"
+          w="full"
+          px={8}
+          h="4.5rem"
+        >
           <Flex>
             <FastFeedbackLogo h="6" w="6" mr="8" />
             <Link mr={4}>Sites</Link>
             <Link>Feedback</Link>
           </Flex>
 
-          <Flex justifyContent="center" alignItems="center">
-            {user && (
+          {user && (
+            <Flex justifyContent="center" alignItems="center">
               <Button variant="ghost" mr={2} onClick={() => signout()}>
                 Log Out
               </Button>
-            )}
 
-            <Avatar size="sm" src={user?.photoUrl} />
-          </Flex>
+              <Avatar size="sm" name={user.name} src={user?.photoUrl} />
+            </Flex>
+          )}
         </Flex>
-      </Flex>
+      </Box>
 
-      <Flex margin="0 auto" direction="column" maxW="1250px" px={8}>
+      {/* Main */}
+      <Flex as="main" direction="column" margin="0 auto" maxW="1250px" px={8}>
         <Breadcrumb>
           <BreadcrumbItem>
             <BreadcrumbLink>Sites</BreadcrumbLink>

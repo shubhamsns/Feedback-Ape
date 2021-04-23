@@ -42,6 +42,7 @@ function AddSiteModal({children}) {
 
   const onCreateSite = async ({name, url}) => {
     setIsLoading(true)
+
     const newSite = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
@@ -63,7 +64,7 @@ function AddSiteModal({children}) {
       })
       .catch(e => console.log(e))
 
-    // optimistic updates for better ux
+    // optimistic update for better ux
     mutate('/api/sites', async data => ({sites: [...data.sites, newSite]}), false)
 
     setIsLoading(false)
@@ -85,7 +86,7 @@ function AddSiteModal({children}) {
         {children}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal motionPreset="slideInBottom" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
 
         <ModalContent as="form" onSubmit={handleSubmit(onCreateSite)}>
