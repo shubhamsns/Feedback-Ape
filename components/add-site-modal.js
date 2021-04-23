@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {mutate} from 'swr'
 import {useForm} from 'react-hook-form'
 import {
   Modal,
@@ -19,7 +20,7 @@ import {
 import {createSite} from '@/lib/db'
 import {useAuth} from '@/lib/auth'
 
-function AddSiteModal() {
+function AddSiteModal({children}) {
   const toast = useToast()
   const auth = useAuth()
 
@@ -30,23 +31,25 @@ function AddSiteModal() {
     handleSubmit,
     register,
     reset,
-    formState: {errors},
+    // todo : show errors in form
+    // formState: {errors},
   } = useForm({
     defaultValues: {
-      site: '',
+      name: '',
       url: '',
     },
   })
 
-  const onCreateSite = async ({site, url}) => {
+  const onCreateSite = async ({name, url}) => {
     setIsLoading(true)
-
-    await createSite({
+    const newSite = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
-      site,
+      name,
       url,
-    })
+    }
+
+    await createSite(newSite)
       .then(() => {
         toast({
           status: 'success',
@@ -60,13 +63,26 @@ function AddSiteModal() {
       })
       .catch(e => console.log(e))
 
+    // optimistic updates for better ux
+    mutate('/api/sites', async data => ({sites: [...data.sites, newSite]}), false)
+
     setIsLoading(false)
   }
 
   return (
     <>
-      <Button fontWeight="medium" maxW="200px" onClick={onOpen}>
-        Add Your First Site
+      <Button
+        onClick={onOpen}
+        backgroundColor="gray.900"
+        color="white"
+        fontWeight="medium"
+        _hover={{bg: 'gray.700'}}
+        _active={{
+          bg: 'gray.800',
+          transform: 'scale(0.95)',
+        }}
+      >
+        {children}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -83,7 +99,7 @@ function AddSiteModal() {
               <Input
                 autoFocus
                 placeholder="My site"
-                {...register('site', {required: {value: true, message: 'Required'}})}
+                {...register('name', {required: {value: true, message: 'Required'}})}
               />
             </FormControl>
 

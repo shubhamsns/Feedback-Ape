@@ -3,6 +3,7 @@ import {Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Heading, Button, Flex, 
 
 import {useAuth} from '@/lib/auth'
 import {FastFeedbackLogo} from '@/assets/icons'
+import {AddSiteModal} from './add-site-modal'
 
 function DashboardShell({children}) {
   const {user, signout} = useAuth()
@@ -39,18 +40,7 @@ function DashboardShell({children}) {
         <Flex justifyContent="space-between">
           <Heading mb={8}>My Sites</Heading>
 
-          <Button
-            backgroundColor="gray.900"
-            color="white"
-            fontWeight="medium"
-            _hover={{bg: 'gray.700'}}
-            _active={{
-              bg: 'gray.800',
-              transform: 'scale(0.95)',
-            }}
-          >
-            + Add Site
-          </Button>
+          <AddSiteModal>+ Add Site</AddSiteModal>
         </Flex>
 
         {children}

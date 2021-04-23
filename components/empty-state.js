@@ -19,7 +19,7 @@ function EmptyState() {
       </Heading>
       <Text mb={4}>Let’s get started.</Text>
 
-      <AddSiteModal />
+      <AddSiteModal>Add your first Site</AddSiteModal>
     </Flex>
   )
 }
