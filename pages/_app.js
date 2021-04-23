@@ -1,12 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {AuthProvider} from '../lib/auth'
+import {ChakraProvider} from '@chakra-ui/react'
 
-function MyApp({Component, pageProps}) {
+import {AuthProvider} from '@/lib/auth'
+import {theme} from '@/styles/theme'
+
+function App({Component, pageProps}) {
   return (
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
+    <ChakraProvider theme={theme} resetCSS>
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
+    </ChakraProvider>
   )
 }
 
-export default MyApp
+export default App
