@@ -1,4 +1,3 @@
-import React from 'react'
 import {Heading, Text, Button, VStack} from '@chakra-ui/react'
 
 import {DashboardShell} from './dashboard-shell'
