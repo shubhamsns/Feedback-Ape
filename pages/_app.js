@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {ProvideAuth} from '../lib/auth'
+import {AuthProvider} from '../lib/auth'
 
 function MyApp({Component, pageProps}) {
   return (
-    <ProvideAuth>
+    <AuthProvider>
       <Component {...pageProps} />
-    </ProvideAuth>
+    </AuthProvider>
   )
 }
 
