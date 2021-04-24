@@ -21,7 +21,7 @@ function Dashboard() {
     )
   }
 
-  return <DashboardShell>{data.sites ? <SiteTable sites={data.sites} /> : <EmptyState />}</DashboardShell>
+  return <DashboardShell>{data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}</DashboardShell>
 }
 
 export default Dashboard
