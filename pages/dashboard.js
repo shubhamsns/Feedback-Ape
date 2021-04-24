@@ -5,6 +5,7 @@ import {SiteTableSkeleton} from '@/components/site-table-skeleton'
 import {DashboardShell} from '@/components/dashboard-shell'
 import {SiteTable} from '@/components/site-table'
 import {SiteTableHeader} from '@/components/site-table-header'
+import {Page} from '@/components/page'
 
 import {useAuth} from '@/lib/auth'
 import {fetcher} from '@/utils/fetcher'
@@ -31,4 +32,12 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+function DashboardPage() {
+  return (
+    <Page name="Dashboard" path="/dashboard">
+      <Dashboard />
+    </Page>
+  )
+}
+
+export default DashboardPage

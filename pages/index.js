@@ -4,10 +4,9 @@ import Link from 'next/link'
 import {Box, Button, Flex, HStack, Text} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
+import {getAllFeedback} from '@/lib/db-admin'
 
 import {FastFeedbackLogo, GithubIcon, GoogleSvgIcon} from '@/assets/icons'
-
-import {getAllFeedback} from '@/lib/db-admin'
 import {Feedback} from '@/components/feedback'
 import {FeedbackLink} from '@/components/feedback-link'
 
@@ -42,7 +41,6 @@ function Home({allFeedback}) {
             `,
               }}
             />
-            <title>Fast Feedback</title>
           </Head>
 
           <FastFeedbackLogo h="16" w="16" mb="2" color="black" />
