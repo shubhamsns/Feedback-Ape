@@ -1,10 +1,10 @@
-import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Heading} from '@chakra-ui/react'
+import {Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Heading} from '@chakra-ui/react'
 
 import {AddSiteModal} from './add-site-modal'
 
 function SiteTableHeader() {
   return (
-    <>
+    <Box mx="4">
       <Breadcrumb>
         <BreadcrumbItem>
           <BreadcrumbLink>Sites</BreadcrumbLink>
@@ -16,7 +16,7 @@ function SiteTableHeader() {
 
         <AddSiteModal>+ Add Site</AddSiteModal>
       </Flex>
-    </>
+    </Box>
   )
 }
 

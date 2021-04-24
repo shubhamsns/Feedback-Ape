@@ -8,6 +8,7 @@ import {FeedbackTableHeader} from '@/components/feedback-table-header'
 
 import {useAuth} from '@/lib/auth'
 import {fetcher} from '@/utils/fetcher'
+import {Page} from '@/components/page'
 
 function MyFeedback() {
   const {user} = useAuth()
@@ -31,4 +32,12 @@ function MyFeedback() {
   )
 }
 
-export default MyFeedback
+function MyFeedbackPage() {
+  return (
+    <Page name="My Feedback" path="/feedback">
+      <MyFeedback />
+    </Page>
+  )
+}
+
+export default MyFeedbackPage
