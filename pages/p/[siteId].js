@@ -33,12 +33,12 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
 function FeedbackPage({initialFeedback}) {
-  const {query} = useRouter()
+  const {query, isFallback} = useRouter()
   const auth = useAuth()
 
   const {handleSubmit, register, reset} = useForm({
@@ -71,16 +71,14 @@ function FeedbackPage({initialFeedback}) {
             <FormLabel htmlFor="comment">Comment</FormLabel>
             <Input id="comment" placeholder="Leave a comment" {...register('text', {required: true})} />
 
-            <Button mt={4} type="submit" fontWeight="medium">
+            <Button mt={4} type="submit" fontWeight="medium" isDisabled={isFallback}>
               Add Comment
             </Button>
           </FormControl>
         </Box>
       )}
 
-      {allFeedback.map(feedback => (
-        <Feedback key={feedback.id} {...feedback} />
-      ))}
+      {allFeedback && allFeedback.map(feedback => <Feedback key={feedback.id} {...feedback} />)}
     </Box>
   )
 }
