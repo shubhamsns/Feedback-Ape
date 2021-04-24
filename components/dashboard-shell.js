@@ -1,16 +1,16 @@
-import {Box, Button, Flex, Link, Avatar} from '@chakra-ui/react'
 import NextLink from 'next/link'
+import {Box, Button, Flex, Link, Avatar} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
 import {FastFeedbackLogo} from '@/assets/icons'
 
 function DashboardShell({children}) {
-  const {user, signout} = useAuth()
+  const {user} = useAuth()
 
   return (
     <Box backgroundColor="gray.100" h="100vh">
       {/* Header */}
-      <Box as="header" backgroundColor="white" mb={16} w="full">
+      <Flex backgroundColor="white" mb={16} w="full" borderTop="5px solid #0AF5F4">
         <Flex
           alignItems="center"
           justifyContent="space-between"
@@ -37,15 +37,17 @@ function DashboardShell({children}) {
 
           {user && (
             <Flex justifyContent="center" alignItems="center">
-              <Button variant="ghost" mr={2} onClick={() => signout()}>
-                Log Out
-              </Button>
+              <NextLink href="/account" passHref>
+                <Button as="a" variant="ghost" mr={2}>
+                  Account
+                </Button>
+              </NextLink>
 
               <Avatar size="sm" name={user.name} src={user?.photoUrl} />
             </Flex>
           )}
         </Flex>
-      </Box>
+      </Flex>
 
       {/* Main */}
       <Flex as="main" direction="column" margin="0 auto" maxW="1250px" px={8}>
