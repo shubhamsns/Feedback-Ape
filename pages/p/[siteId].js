@@ -41,7 +41,9 @@ function FeedbackPage({initialFeedback}) {
   const {query} = useRouter()
   const auth = useAuth()
 
-  const {handleSubmit, register} = useForm()
+  const {handleSubmit, register, reset} = useForm({
+    defaultValues: {text: ''},
+  })
 
   const [allFeedback, setAllFeedback] = useState(initialFeedback)
 
@@ -55,9 +57,10 @@ function FeedbackPage({initialFeedback}) {
       status: 'pending',
       text,
     }
-
     setAllFeedback([newFeedback, ...allFeedback])
+
     createFeedback(newFeedback)
+    reset()
   }
 
   return (
@@ -66,8 +69,7 @@ function FeedbackPage({initialFeedback}) {
         <Box as="form" onSubmit={handleSubmit(onSubmit)}>
           <FormControl my={8}>
             <FormLabel htmlFor="comment">Comment</FormLabel>
-
-            <Input id="comment" placeholder="Leave a comment" {...register('text')} />
+            <Input id="comment" placeholder="Leave a comment" {...register('text', {required: true})} />
 
             <Button mt={4} type="submit" fontWeight="medium">
               Add Comment

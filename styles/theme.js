@@ -6,6 +6,7 @@ const theme = extendTheme({
       html: {
         minWidth: '360px',
         scrollBehavior: 'smooth',
+        backgroundColor: '#ed2f7',
       },
       '#__next': {
         display: 'flex',

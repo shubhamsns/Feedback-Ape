@@ -64,8 +64,8 @@ function AddSiteModal({children}) {
       })
       .catch(err => console.log(err))
 
-    // optimistic update for better ux
-    mutate(['/api/sites', auth.user.token], async data => ({sites: [...data.sites, newSite]}), false)
+    // optimistic update for better ux and then it refetches for fresh data
+    mutate(['/api/sites', auth.user.token], async data => ({sites: [...data.sites, newSite]}))
 
     setIsLoading(false)
   }
