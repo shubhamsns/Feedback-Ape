@@ -14,12 +14,12 @@ function EmptyState() {
       direction="column"
     >
       <Heading size="lg" mb={2}>
-        You haven’t added any sites.
+        You haven’t added any Sites
       </Heading>
 
       <Text mb={4}>Let’s get started.</Text>
 
-      <AddSiteModal>Add your first Site</AddSiteModal>
+      <AddSiteModal>Add Your First Site</AddSiteModal>
     </Flex>
   )
 }

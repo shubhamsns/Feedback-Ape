@@ -1,6 +1,6 @@
-import {Box, Link} from '@chakra-ui/react'
 import NextLink from 'next/link'
 import {parseISO, format} from 'date-fns'
+import {Box, Link} from '@chakra-ui/react'
 
 import {Table, Tr, Th, Td} from './table'
 

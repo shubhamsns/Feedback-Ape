@@ -9,9 +9,9 @@ import {useAuth} from '@/lib/auth'
 import {fetcher} from '@/utils/fetcher'
 
 function Dashboard() {
-  const auth = useAuth()
+  const {user} = useAuth()
 
-  const {data} = useSWR('/api/sites', fetcher)
+  const {data} = useSWR(user ? ['/api/sites', user.token] : null, fetcher)
 
   if (!data) {
     return (
