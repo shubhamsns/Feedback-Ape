@@ -62,10 +62,10 @@ function AddSiteModal({children}) {
         reset()
         onClose()
       })
-      .catch(e => console.log(e))
+      .catch(err => console.log(err))
 
     // optimistic update for better ux
-    mutate('/api/sites', async data => ({sites: [...data.sites, newSite]}), false)
+    mutate(['/api/sites', auth.user.token], async data => ({sites: [...data.sites, newSite]}), false)
 
     setIsLoading(false)
   }
