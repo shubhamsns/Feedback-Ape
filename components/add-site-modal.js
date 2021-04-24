@@ -50,22 +50,20 @@ function AddSiteModal({children}) {
       url,
     }
 
-    await createSite(newSite)
-      .then(() => {
-        toast({
-          status: 'success',
-          title: 'Success',
-          description: "We've added your site.",
-          isClosable: true,
-          position: 'top',
-        })
-        reset()
-        onClose()
-      })
-      .catch(err => console.log(err))
+    const {id} = await createSite(newSite)
 
-    // optimistic update for better ux and then it refetches for fresh data
-    mutate(['/api/sites', auth.user.token], async data => ({sites: [...data.sites, newSite]}))
+    toast({
+      status: 'success',
+      title: 'Success',
+      description: "We've added your site.",
+      isClosable: true,
+      position: 'top',
+    })
+    reset()
+    onClose()
+
+    // optimistic update for better ux
+    mutate(['/api/sites', auth.user.token], async data => ({sites: [{...newSite, id}, ...data.sites]}), false)
 
     setIsLoading(false)
   }

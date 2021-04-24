@@ -14,7 +14,7 @@ function Feedback({author, text, createdAt}) {
 
       <Text color="gray.800">{text}</Text>
 
-      <Divider borderColor="gray.200" backgroundColor="gray.200" mt={8} mb={8} />
+      <Divider borderColor="gray.200" backgroundColor="gray.200" my={8} />
     </Box>
   )
 }
