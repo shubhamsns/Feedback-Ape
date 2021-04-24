@@ -8,9 +8,9 @@ function DashboardShell({children}) {
   const {user} = useAuth()
 
   return (
-    <Box backgroundColor="gray.100" h="100vh">
+    <Box backgroundColor="gray.100" h="auto" pb="20">
       {/* Header */}
-      <Flex backgroundColor="white" mb={16} w="full" borderTop="5px solid #0AF5F4">
+      <Flex backgroundColor="white" mb={[8, 16]} w="full" borderTop="5px solid #0AF5F4">
         <Flex
           alignItems="center"
           justifyContent="space-between"
@@ -19,7 +19,7 @@ function DashboardShell({children}) {
           margin="0 auto"
           w="full"
           px={8}
-          h="4.5rem"
+          h="16"
         >
           <Flex align="center">
             <NextLink href="/" passHref>
@@ -50,7 +50,7 @@ function DashboardShell({children}) {
       </Flex>
 
       {/* Main */}
-      <Flex as="main" direction="column" margin="0 auto" maxW="1250px" px={8}>
+      <Flex as="main" direction="column" margin="0 auto" maxW="1250px" px={[0, 8, 8]}>
         {children}
       </Flex>
     </Box>
