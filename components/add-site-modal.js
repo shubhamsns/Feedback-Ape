@@ -48,6 +48,11 @@ function AddSiteModal({children}) {
       createdAt: new Date().toISOString(),
       name,
       url,
+      settings: {
+        icons: true,
+        timestamp: true,
+        ratings: false,
+      },
     }
 
     const {id} = await createSite(newSite)
