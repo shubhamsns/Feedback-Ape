@@ -82,8 +82,13 @@ function Home({allFeedback, site}) {
       <Box display="flex" flexDirection="column" width="full" maxWidth="700px" margin="0 auto" px={4} mt={8}>
         <FeedbackLink paths={[SITE_ID]} />
 
-        {allFeedback.map(feedback => (
-          <Feedback key={feedback.id} {...feedback} />
+        {allFeedback.map((feedback, index) => (
+          <Feedback
+            key={feedback.id}
+            settings={site?.settings}
+            isLast={index === allFeedback.length - 1}
+            {...feedback}
+          />
         ))}
       </Box>
     </>
