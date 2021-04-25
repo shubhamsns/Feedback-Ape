@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import Head from 'next/head'
 import Link from 'next/link'
-import {Box, Button, Flex, HStack, Text} from '@chakra-ui/react'
+import {Box, Button, Flex, HStack, Stack, Text} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
 import {getAllFeedback} from '@/lib/db-admin'
@@ -28,7 +28,7 @@ function Home({allFeedback}) {
 
   return (
     <>
-      <Box bg="gray.100" py={16}>
+      <Box bg="gray.100" py={16} px={4}>
         <Flex as="main" direction="column" maxW="700px" margin="0 auto">
           <Head>
             {/* https://vercel.com/blog/simple-auth-with-magic-link-and-nextjs#handling-unwanted-page-transitions */}
@@ -74,7 +74,7 @@ function Home({allFeedback}) {
               </Button>
             </Link>
           ) : (
-            <HStack mt="4">
+            <Stack direction={['column', 'row']}>
               <Button
                 onClick={() => auth.signinWithGitHub()}
                 backgroundColor="gray.900"
@@ -105,11 +105,11 @@ function Home({allFeedback}) {
               >
                 Continue with Google
               </Button>
-            </HStack>
+            </Stack>
           )}
         </Flex>
       </Box>
-      <Box display="flex" flexDirection="column" width="full" maxWidth="700px" margin="0 auto" mt={8}>
+      <Box display="flex" flexDirection="column" width="full" maxWidth="700px" margin="0 auto" px={4} mt={8}>
         <FeedbackLink siteId={SITE_ID} />
         {allFeedback.map(feedback => (
           <Feedback key={feedback.id} {...feedback} />
