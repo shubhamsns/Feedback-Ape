@@ -4,7 +4,6 @@ const theme = extendTheme({
   styles: {
     global: {
       html: {
-        minWidth: '360px',
         scrollBehavior: 'smooth',
       },
       '#__next': {
