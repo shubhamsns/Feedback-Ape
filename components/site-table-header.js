@@ -2,7 +2,7 @@ import {Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Heading} from '@c
 
 import {AddSiteModal} from './add-site-modal'
 
-function SiteTableHeader() {
+function SiteTableHeader({numberOfSites}) {
   return (
     <Box mx="4">
       <Breadcrumb>
@@ -14,7 +14,7 @@ function SiteTableHeader() {
       <Flex justifyContent="space-between">
         <Heading mb={8}>My Sites</Heading>
 
-        <AddSiteModal>+ Add Site</AddSiteModal>
+        {numberOfSites < 5 && <AddSiteModal>+ Add Site</AddSiteModal>}
       </Flex>
     </Box>
   )

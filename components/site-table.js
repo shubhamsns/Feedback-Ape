@@ -24,7 +24,7 @@ function SiteTable({sites}) {
               <Td fontWeight="medium">{site.name}</Td>
               <Td>{site.url}</Td>
               <Td>
-                <NextLink href="/p/[siteId]" as={`/p/${site.id}`} passHref>
+                <NextLink href="/site/[siteId]" as={`/site/${site.id}`} passHref>
                   <Link color="blue.500" fontWeight="medium">
                     View Feedback
                   </Link>

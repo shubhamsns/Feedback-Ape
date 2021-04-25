@@ -1,29 +1,32 @@
 /* eslint-disable react/no-danger */
 import Head from 'next/head'
 import Link from 'next/link'
-import {Box, Button, Flex, HStack, Stack, Text} from '@chakra-ui/react'
+import {Box, Button, Flex, Text} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
-import {getAllFeedback} from '@/lib/db-admin'
+import {getAllFeedback, getSite} from '@/lib/db-admin'
+import {FastFeedbackLogo} from '@/assets/icons'
 
-import {FastFeedbackLogo, GithubIcon, GoogleSvgIcon} from '@/assets/icons'
-import {Feedback} from '@/components/feedback'
+import {LoginButtons} from '@/components/login-buttons'
 import {FeedbackLink} from '@/components/feedback-link'
+import {Feedback} from '@/components/feedback'
 
 const SITE_ID = process.env.NEXT_PUBLIC_HOME_PAGE_SITE_ID
 
 export async function getStaticProps() {
   const {feedback} = await getAllFeedback(SITE_ID)
+  const {site} = await getSite(SITE_ID)
 
   return {
     props: {
       allFeedback: feedback,
+      site,
     },
     revalidate: 1,
   }
 }
 
-function Home({allFeedback}) {
+function Home({allFeedback, site}) {
   const auth = useAuth()
 
   return (
@@ -36,7 +39,7 @@ function Home({allFeedback}) {
               dangerouslySetInnerHTML={{
                 __html: `
               if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
-                window.location.href = "/dashboard"
+                window.location.href = "/sites"
               }
             `,
               }}
@@ -54,19 +57,16 @@ function Home({allFeedback}) {
           </Text>
 
           {auth.user ? (
-            <Link href="/dashboard" passHref>
+            <Link href="/sites" passHref>
               <Button
                 as="a"
-                backgroundColor="white"
-                color="gray.900"
-                variant="outline"
+                backgroundColor="gray.900"
+                color="white"
                 fontWeight="medium"
                 maxW="200px"
-                mt={4}
-                size="lg"
-                _hover={{bg: 'gray.100'}}
+                _hover={{bg: 'gray.700'}}
                 _active={{
-                  bg: 'gray.100',
+                  bg: 'gray.800',
                   transform: 'scale(0.95)',
                 }}
               >
@@ -74,43 +74,14 @@ function Home({allFeedback}) {
               </Button>
             </Link>
           ) : (
-            <Stack direction={['column', 'row']}>
-              <Button
-                onClick={() => auth.signinWithGitHub()}
-                backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                leftIcon={<GithubIcon />}
-                _hover={{bg: 'gray.700'}}
-                _active={{
-                  bg: 'gray.800',
-                  transform: 'scale(0.95)',
-                }}
-              >
-                Continue with GitHub
-              </Button>
-
-              <Button
-                onClick={() => auth.signinWithGoogle()}
-                backgroundColor="white"
-                color="gray.900"
-                variant="outline"
-                fontWeight="medium"
-                leftIcon={<GoogleSvgIcon />}
-                _hover={{bg: 'gray.100'}}
-                _active={{
-                  bg: 'gray.100',
-                  transform: 'scale(0.95)',
-                }}
-              >
-                Continue with Google
-              </Button>
-            </Stack>
+            <LoginButtons />
           )}
         </Flex>
       </Box>
+
       <Box display="flex" flexDirection="column" width="full" maxWidth="700px" margin="0 auto" px={4} mt={8}>
-        <FeedbackLink siteId={SITE_ID} />
+        <FeedbackLink paths={[SITE_ID]} />
+
         {allFeedback.map(feedback => (
           <Feedback key={feedback.id} {...feedback} />
         ))}
