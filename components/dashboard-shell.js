@@ -8,7 +8,7 @@ function DashboardShell({children}) {
   const {user} = useAuth()
 
   return (
-    <Box backgroundColor="gray.100" h="auto" pb="20">
+    <Box backgroundColor="gray.100" h="100vh">
       {/* Header */}
       <Flex backgroundColor="white" mb={[8, 16]} w="full" borderTop="5px solid #0AF5F4">
         <Flex
@@ -27,7 +27,7 @@ function DashboardShell({children}) {
                 <FastFeedbackLogo h="6" w="6" mr="8" />
               </Link>
             </NextLink>
-            <NextLink href="/dashboard" passHref>
+            <NextLink href="/sites" passHref>
               <Link mr={4}>Sites</Link>
             </NextLink>
             <NextLink href="/feedback" passHref>

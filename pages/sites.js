@@ -1,14 +1,14 @@
 import useSWR from 'swr'
 
+import {useAuth} from '@/lib/auth'
+import {fetcher} from '@/utils/fetcher'
+
 import {EmptyState} from '@/components/empty-state'
 import {SiteTableSkeleton} from '@/components/site-table-skeleton'
 import {DashboardShell} from '@/components/dashboard-shell'
 import {SiteTable} from '@/components/site-table'
 import {SiteTableHeader} from '@/components/site-table-header'
 import {Page} from '@/components/page'
-
-import {useAuth} from '@/lib/auth'
-import {fetcher} from '@/utils/fetcher'
 
 function Dashboard() {
   const {user} = useAuth()
@@ -26,7 +26,7 @@ function Dashboard() {
 
   return (
     <DashboardShell>
-      <SiteTableHeader />
+      <SiteTableHeader numberOfSites={data.sites.length} />
       {data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}
     </DashboardShell>
   )
@@ -34,7 +34,7 @@ function Dashboard() {
 
 function DashboardPage() {
   return (
-    <Page name="Dashboard" path="/dashboard">
+    <Page name="Dashboard" path="/sites">
       <Dashboard />
     </Page>
   )
