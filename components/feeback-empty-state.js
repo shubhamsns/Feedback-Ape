@@ -15,7 +15,7 @@ function FeedbackEmptyState() {
         There isn't any feedback.
       </Heading>
 
-      <Text mb={4}>Share your site!</Text>
+      <Text mb={4}>Share your sites!</Text>
     </Flex>
   )
 }

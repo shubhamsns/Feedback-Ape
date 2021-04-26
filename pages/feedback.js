@@ -33,7 +33,7 @@ function AllFeedback() {
     <DashboardShell>
       <FeedbackTableHeader />
 
-      {data.feedback.length ? <FeedbackTable allFeedback={data.feedback} /> : <FeedbackEmptyState />}
+      {data?.feedback?.length ? <FeedbackTable allFeedback={data.feedback} /> : <FeedbackEmptyState />}
     </DashboardShell>
   )
 }
