@@ -9,7 +9,7 @@ Demo live at: [fastfeedback.shubham-sns.vercel.app](fastfeedback.shubham-sns.ver
 ## Features
 * Authentication for adding comments and using app
 * Add sites on which you want feedback
-* integrate fast feedback to your app with one live of code
+* integrate Feedback Ape to your app with one live of code
 * Feedback listings with route on which it was posted
 * Change feedback visibility - public/hidden
 
