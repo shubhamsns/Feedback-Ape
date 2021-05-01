@@ -1,10 +1,10 @@
-# Fast Feedback
+# Feedback Ape
 
 
 > Easily add user reviews, feedback, and comments to your website in one line of code.
 This product is being built as part of [React 2025](https://react2025.com).
 
-Demo live at: [fastfeedback.shubham-sns.vercel.app](fastfeedback.shubham-sns.vercel.app)
+Demo live at: [feedbackape.vercel.app](Feedback Ape 🐵)
 
 ## Features
 * Authentication for adding comments and using app
