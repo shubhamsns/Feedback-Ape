@@ -45,17 +45,15 @@ function Home({allFeedback, site}) {
               }}
             />
           </Head>
-
-          <FastFeedbackLogo h="16" w="16" mb="2" color="black" />
-
+          {/* <FastFeedbackLogo h="16" w="16" mb="2" color="black" /> */}
+          <Text fontSize="40">🐵</Text>
           <Text mb={4} fontSize="lg">
             <Text as="span" fontWeight="bold">
-              Fast Feedback{` `}
+              Feedback Ape{` `}
             </Text>
             is the easiest way to add comments or reviews to your static site. It's still a work-in-progress, but you
             can try it out by logging in.
           </Text>
-
           {auth.user ? (
             <Link href="/sites" passHref>
               <Button
