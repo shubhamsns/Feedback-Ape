@@ -5,7 +5,6 @@ import {Box, Button, Flex, Text} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
 import {getAllFeedback, getSite} from '@/lib/db-admin'
-import {FastFeedbackLogo} from '@/assets/icons'
 
 import {LoginButtons} from '@/components/login-buttons'
 import {FeedbackLink} from '@/components/feedback-link'
@@ -45,7 +44,6 @@ function Home({allFeedback, site}) {
               }}
             />
           </Head>
-          {/* <FastFeedbackLogo h="16" w="16" mb="2" color="black" /> */}
           <Text fontSize="40">🐵</Text>
           <Text mb={4} fontSize="lg">
             <Text as="span" fontWeight="bold">
