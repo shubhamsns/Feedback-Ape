@@ -17,7 +17,7 @@ Demo live at: [Feedback Ape 🐵](https://feedbackape.vercel.app)
 ## Features
 * Authentication for adding comments and using app
 * Add sites on which you want feedback
-* integrate Feedback Ape to your app with one live of code
+* integrate Feedback Ape to your app with one line of code
 * Feedback listings with route on which it was posted
 * Change feedback visibility - public/hidden
 
