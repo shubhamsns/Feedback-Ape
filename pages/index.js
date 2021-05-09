@@ -4,28 +4,10 @@ import Link from 'next/link'
 import {Box, Button, Flex, Text} from '@chakra-ui/react'
 
 import {useAuth} from '@/lib/auth'
-import {getAllFeedback, getSite} from '@/lib/db-admin'
 
 import {LoginButtons} from '@/components/login-buttons'
-import {FeedbackLink} from '@/components/feedback-link'
-import {Feedback} from '@/components/feedback'
 
-const SITE_ID = process.env.NEXT_PUBLIC_HOME_PAGE_SITE_ID
-
-export async function getStaticProps() {
-  const {feedback} = await getAllFeedback(SITE_ID)
-  const {site} = await getSite(SITE_ID)
-
-  return {
-    props: {
-      allFeedback: feedback,
-      site,
-    },
-    revalidate: 1,
-  }
-}
-
-function Home({allFeedback, site}) {
+function Home() {
   const auth = useAuth()
 
   return (
@@ -44,14 +26,17 @@ function Home({allFeedback, site}) {
               }}
             />
           </Head>
+
           <Text fontSize="40">🐵</Text>
+
           <Text mb={4} fontSize="lg">
             <Text as="span" fontWeight="bold">
               Feedback Ape{` `}
             </Text>
-            is the easiest way to add comments or reviews to your static site. It's still a work-in-progress, but you
-            can try it out by logging in.
+            is the easiest way to add comments or reviews to your static site. Try it out by leaving a comment below.
+            After the comment is approved, it will display below.
           </Text>
+
           {auth.user ? (
             <Link href="/sites" passHref>
               <Button
@@ -75,18 +60,34 @@ function Home({allFeedback, site}) {
         </Flex>
       </Box>
 
-      <Box display="flex" flexDirection="column" width="full" maxWidth="700px" margin="0 auto" px={4} mt={8}>
-        <FeedbackLink paths={[SITE_ID]} />
+      <Text
+        my="4"
+        backgroundColor="#99FFFE"
+        color="#194D4C"
+        fontSize="2xl"
+        fontWeight="bold"
+        textAlign="center"
+        maxWidth="700px"
+        p={4}
+        rounded="md"
+        mx="auto"
+      >
+        This is Our Feedback Integration in Action!
+      </Text>
 
-        {allFeedback.map((feedback, index) => (
-          <Feedback
-            key={feedback.id}
-            settings={site?.settings}
-            isLast={index === allFeedback.length - 1}
-            {...feedback}
-          />
-        ))}
-      </Box>
+      {/* feedback Iframe */}
+      <Box
+        as="iframe"
+        title="feedback"
+        src="https://feedbackape.vercel.app/embed/3BGPAcdMV7EFeLO9A9Yj"
+        frameBorder="0"
+        maxWidth="700px"
+        w="full"
+        margin="0 auto"
+        px={4}
+        mt={8}
+        h="100vh"
+      />
     </>
   )
 }
