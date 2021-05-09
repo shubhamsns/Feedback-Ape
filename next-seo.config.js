@@ -4,16 +4,16 @@ const description = 'Feedback Ape helps you to integrate comments in your sites 
 const SEO = {
   title,
   description,
-  canonical: 'https://fastfeedback.shubham-sns.vercel.app',
+  canonical: 'https://feedbackape.vercel.app',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://fastfeedback.shubham-sns.vercel.app',
+    url: 'https://feedbackape.vercel.app',
     title,
     description,
     images: [
       {
-        url: 'https://fastfeedback.shubham-sns.vercel.app/og.png',
+        url: 'https://feedbackape.vercel.app/og.png',
         alt: title,
         width: 1280,
         height: 720,

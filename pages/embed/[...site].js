@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router'
-import {Box} from '@chakra-ui/react'
+import {Box, Flex} from '@chakra-ui/react'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 
 import {getAllFeedback, getAllSites, getSite} from '@/lib/db-admin'
@@ -38,10 +38,8 @@ export async function getStaticPaths() {
 function EmbeddedFeedbackPage({initialFeedback, site}) {
   const router = useRouter()
 
-  console.log(router.query.site)
-
   return (
-    <Box display="flex" flexDirection="column" width="full">
+    <Flex flexDir="column">
       <FeedbackLink paths={router.query.site} />
 
       {initialFeedback?.length ? (
@@ -56,7 +54,7 @@ function EmbeddedFeedbackPage({initialFeedback, site}) {
       ) : (
         <Box>There are no comments for this site.</Box>
       )}
-    </Box>
+    </Flex>
   )
 }
 

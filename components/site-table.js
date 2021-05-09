@@ -56,7 +56,7 @@ function CopyLink() {
     <IconButton
       onClick={() => {
         navigator.clipboard.writeText(
-          `<iframe src='https://fastfeedback.shubham-sns.vercel.app/embed/3BGPAcdMV7EFeLO9A9Yj' frameBorder='0' />`
+          `<iframe src='https://feedbackape.vercel.app/embed/3BGPAcdMV7EFeLO9A9Yj' frameBorder='0' />`
         )
         toast({
           status: 'success',
