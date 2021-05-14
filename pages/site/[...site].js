@@ -37,7 +37,7 @@ function FeedbackPage() {
       authorId: user.uid,
       createdAt: new Date().toISOString(),
       provider: user.provider,
-      status: 'pending',
+      status: 'active',
       text,
     }
 
