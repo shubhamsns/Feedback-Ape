@@ -5,7 +5,7 @@ import {FeedbackRow} from './feedback-row'
 
 function FeedbackTable({allFeedback}) {
   return (
-    <Box overflowX="scroll">
+    <Box mb="20" overflowX="auto">
       <Table w="full">
         <thead>
           <Tr>
