@@ -8,7 +8,7 @@ function DashboardShell({children}) {
   const {user} = useAuth()
 
   return (
-    <Box backgroundColor="gray.100" h="100vh">
+    <Box backgroundColor="gray.100" minH="100vh">
       {/* Header */}
       <Flex backgroundColor="white" mb={[8, 16]} w="full" borderTop="5px solid #0AF5F4">
         <Flex
