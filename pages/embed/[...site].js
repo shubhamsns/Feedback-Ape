@@ -8,8 +8,8 @@ import {FeedbackLink} from '@/components/feedback-link'
 import {Feedback} from '@/components/feedback'
 
 export async function getStaticProps(context) {
-  const [siteId, route] = context.params.site
-  const {feedback} = await getAllFeedback(siteId, route)
+  const [siteId, ...route] = context.params.site
+  const {feedback} = await getAllFeedback(siteId, route.join(' / '))
   const {site} = await getSite(siteId)
 
   return {
@@ -52,7 +52,7 @@ function EmbeddedFeedbackPage({initialFeedback, site}) {
           />
         ))
       ) : (
-        <Box>There are no comments for this site.</Box>
+        <Box>There are no comments.</Box>
       )}
     </Flex>
   )

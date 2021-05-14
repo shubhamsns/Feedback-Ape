@@ -19,7 +19,8 @@ function FeedbackPage() {
 
   const siteAndRoute = router.query?.site
   const siteId = siteAndRoute ? siteAndRoute[0] : null
-  const route = siteAndRoute ? siteAndRoute[1] : null
+  const route = siteAndRoute ? siteAndRoute.slice(1).join(' / ') : null
+
   const feedbackApi = route ? `/api/feedback/${siteId}/${route}` : `/api/feedback/${siteId}`
 
   const {data: siteData} = useSWR(`/api/site/${siteId}`, fetcher)

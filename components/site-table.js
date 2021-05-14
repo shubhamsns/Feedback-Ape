@@ -36,7 +36,7 @@ function SiteTable({sites}) {
               <Td>{format(parseISO(site.createdAt), 'PPpp')}</Td>
               <Td>
                 <HStack>
-                  <CopyLink />
+                  <CopyLink siteId={site.id} />
 
                   <DeleteSiteButton siteId={site.id} />
                 </HStack>
@@ -49,15 +49,13 @@ function SiteTable({sites}) {
   )
 }
 
-function CopyLink() {
+function CopyLink({siteId}) {
   const toast = useToast()
 
   return (
     <IconButton
       onClick={() => {
-        navigator.clipboard.writeText(
-          `<iframe src='https://feedbackape.vercel.app/embed/3BGPAcdMV7EFeLO9A9Yj' frameBorder='0' />`
-        )
+        navigator.clipboard.writeText(`<iframe src='https://feedbackape.vercel.app/embed/${siteId}' frameBorder='0' />`)
         toast({
           status: 'success',
           isClosable: true,
