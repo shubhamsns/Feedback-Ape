@@ -22,11 +22,8 @@ function DashboardShell({children}) {
           h="16"
         >
           <Flex align="center">
-            <NextLink href="/" passHref>
-              <Link>
-                <FastFeedbackLogo h="6" w="6" mr="8" />
-              </Link>
-            </NextLink>
+            <FastFeedbackLogo h="6" w="6" mr="8" />
+
             <NextLink href="/sites" passHref>
               <Link mr={4}>Sites</Link>
             </NextLink>
