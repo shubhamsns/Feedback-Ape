@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import {Box, Button, Flex, Text} from '@chakra-ui/react'
+import IframeResizer from 'iframe-resizer-react'
 
 import {useAuth} from '@/lib/auth'
 
@@ -75,18 +76,16 @@ function Home() {
         This is Our Feedback Integration in Action!
       </Text>
 
-      {/* feedback Iframe */}
       <Box
-        as="iframe"
-        title="feedback"
+        as={IframeResizer}
+        checkOrigin={false}
+        title="Comments"
         src="https://feedbackape.vercel.app/embed/3BGPAcdMV7EFeLO9A9Yj"
-        frameBorder="0"
         maxWidth="700px"
         w="full"
         margin="0 auto"
         px={4}
         mt={8}
-        h="100vh"
       />
     </>
   )
