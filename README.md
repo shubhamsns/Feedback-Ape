@@ -21,6 +21,30 @@ Demo live at: [Feedback Ape 🐵](https://feedbackape.vercel.app)
 * Feedback listings with route on which it was posted
 * Change feedback visibility - public/hidden
 
+## How to Use
+You can embed our route into another site in one line code of using an iframe. This is crucial because it requires no extra JavaScript for the you, if necessary. A static page is served and regenerated periodically to show all comments that have been approved.
+
+```html
+<iframe src="https://feedbackape.vercel.app/embed/SITE_ID/ROUTE" />
+```
+
+When embedding the feedback iframe, you might want to automatically resize the height to its contents. This can be achieved using __[iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer)__.
+
+For example, if you are using React, you can add __[iframe-resizer-react](https://github.com/davidjbradshaw/iframe-resizer-react)__ and do something like this. This library is 5.8kB minified + gzipped with no dependencies.
+
+```jsx
+<IframeResizer
+  checkOrigin={false}
+  title="Comments"
+  src={`https://feedbackape.vercel.app/embed/SITE_ID`}
+  style={{
+    width: '1px',
+    minWidth: '100%',
+  }}
+/>
+```
+To enable this on the embed side, we have installed iframe-resizer and included the JS snippet inside the embedded route.
+
 ## Views / Pages
 
 Sites Page             |  Feedback Page
