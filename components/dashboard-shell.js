@@ -4,6 +4,8 @@ import {Box, Button, Flex, Link, Avatar} from '@chakra-ui/react'
 import {useAuth} from '@/lib/auth'
 import {FastFeedbackLogo} from '@/assets/icons'
 
+import {GithubCorner} from './github-corner'
+
 function DashboardShell({children}) {
   const {user} = useAuth()
 
@@ -44,6 +46,8 @@ function DashboardShell({children}) {
             </Flex>
           )}
         </Flex>
+
+        <GithubCorner />
       </Flex>
 
       {/* Main */}
