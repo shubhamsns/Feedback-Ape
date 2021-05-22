@@ -7,6 +7,7 @@ import IframeResizer from 'iframe-resizer-react'
 import {useAuth} from '@/lib/auth'
 
 import {LoginButtons} from '@/components/login-buttons'
+import {GithubCorner} from '@/components/github-corner'
 
 function Home() {
   const auth = useAuth()
@@ -15,6 +16,7 @@ function Home() {
     <>
       <Box bg="gray.100" py={16} px={4}>
         <Flex as="main" direction="column" maxW="700px" margin="0 auto">
+          <GithubCorner />
           <Head>
             {/* https://vercel.com/blog/simple-auth-with-magic-link-and-nextjs#handling-unwanted-page-transitions */}
             <script
